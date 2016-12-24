@@ -103,7 +103,7 @@ public class SpireAutomator {
 
     private static WebDriver getWebDriver() {
         WebDriver driver = null;
-        System.out.println("Web browser?\n1: Google Chrome\n2: Mozilla Firefox (Gecko driver)");
+        System.out.println("Web browser?\n1: Google Chrome\n2: Mozilla Firefox");
         do {
             int browser = new Scanner(System.in).nextInt();
             if(browser == 1) {
@@ -117,11 +117,11 @@ public class SpireAutomator {
                 driver = new ChromeDriver();
             } else if(browser == 2) {
                 if(IS_OS_WINDOWS) {
-                    System.setProperty("webdriver.gecko.driver", WebDriverExecutable.GECKO_WIN64);
+                    System.setProperty("webdriver.gecko.driver", WebDriverExecutable.FIREFOX_WIN64);
                 } else if(IS_OS_MAC) {
-                    System.setProperty("webdriver.gecko.driver", WebDriverExecutable.GECKO_MACOS);
+                    System.setProperty("webdriver.gecko.driver", WebDriverExecutable.FIREFOX_MACOS);
                 } else if (IS_OS_LINUX) {
-                    System.setProperty("webdriver.gecko.driver", WebDriverExecutable.GECKO_LINUX64);
+                    System.setProperty("webdriver.gecko.driver", WebDriverExecutable.FIREFOX_LINUX64);
                 }
                 driver = new FirefoxDriver();
             } else {
