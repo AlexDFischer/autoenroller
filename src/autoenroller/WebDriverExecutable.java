@@ -1,4 +1,4 @@
-package fischerautoenroll;
+package autoenroller;
 
 public class WebDriverExecutable {
     public static final String CHROME_WIN32 = "chromedriver-win32.exe";

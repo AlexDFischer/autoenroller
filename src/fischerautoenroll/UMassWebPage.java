@@ -20,7 +20,17 @@ public class UMassWebPage
 	public static final String SELECT_TERMS_ROW_CLASS = "PSLEVEL2GRIDROW";
 	public static final String SEMESTER_CONTINUE = "DERIVED_SSS_SCT_SSR_PB_GO";
 
-	// Swap classes
+	// Select discussion page
+    public static final String SELECT_DISC_TABLE = "#SSR_CLS_TBL_R1\\24 scroll\\24 0 > tbody > tr:nth-child(2) > td > table";
+    public static final String SELECT_DISC_ROW_CLASS = "PSLEVEL1GRIDROW";
+    public static final String SELECT_DISC_ALT_OPEN = "Open";
+    public static final String SELECT_DISC_SECTION_NAME = "R1_SECTION$";
+    public static final String SELECT_DISC_SECTION_TIME = "DERIVED_CLS_DTL_SSR_MTG_SCHED_LONG$190$$";
+    public static final String SELECT_DISC_SECTION_NUMB = "PSEDITBOX_DISPONLY";
+    public static final String SELECT_DISC_RADIO_BUTTON = "PSRADIOBUTTON";
+    public static final String SELECT_DISC_NEXT_BUTTON = "SSSBUTTON_CONFIRMLINK";
+
+    // Swap classes
 	public static final String SWAP_BUTTON = "//*[@id=\"win0divDERIVED_SSTSNAV_SSTS_NAV_SUBTABS\"]/div/table/tbody/tr[2]/td[14]/a";
 	public static final String SWAP_FROM_SCHEDULE = "#DERIVED_REGFRM1_DESCR50\\24 225\\24";
 	public static final String SWAP_WITH_CART = "#DERIVED_REGFRM1_SSR_CLASSNAME_35\\24 183\\24";
