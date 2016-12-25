@@ -3,7 +3,9 @@ package autoenroller;
 /**
  * Tested on:
  * Chrome on Windows
+ * Chrome on Mac
  * Chrome on Linux
+ * Firefox on Mac
  * Firefox on Linux
  */
 public class WebDriverExecutable {
