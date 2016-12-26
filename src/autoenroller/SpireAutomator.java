@@ -49,6 +49,7 @@ public class SpireAutomator {
         // End shopping cart.
 
         // Start actions.
+        // Example of a simple single Condition to meet.
         actions.add(new Swap(math235_07, math235_02).addCondition(new Condition() {
             @Override
             public boolean isMet() {
@@ -69,6 +70,8 @@ public class SpireAutomator {
                 return compsci326_01.getNameAndSection()+" is open";
             }
         }));
+        // Example of an Action that has two independent Conditions.
+        // In this case, one of the Conditions may only be met if another Action performs.
         actions.add(new Edit(compsci311_01, compsci311_01ab).addCondition(new Condition() {
             @Override
             public boolean isMet() {
@@ -78,7 +81,18 @@ public class SpireAutomator {
             public String toString() {
                 return compsci311_01ab.getNameAndSection()+" is open";
             }
+        }).addCondition(new Condition() {
+            @Override
+            public boolean isMet() {
+                return !currentSchedule.contains(math235_02);
+            }
+            @Override
+            public String toString() {
+                return "Not enrolled in "+math235_02.getNameAndSection();
+            }
         }));
+        // Example of an Action with one Condition that has multiple 'sub-conditions'.
+        // Used when a condition needs to check for multiple sub-conditions that are codependent.
         actions.add(new Edit(compsci240_01, compsci240_01aa).addCondition(new Condition() {
             @Override
             public boolean isMet() {

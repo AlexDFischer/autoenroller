@@ -1,12 +1,16 @@
 package autoenroller;
 
 /**
- * Tested on:
+ * Executable functionality tested on:
  * Chrome on Windows
  * Chrome on Mac
  * Chrome on Linux
  * Firefox on Mac
  * Firefox on Linux
+ *
+ * Selenium functionality tested on:
+ * Chrome on Windows
+ * Chrome on Linux
  */
 public class WebDriverExecutable {
     public static final String CHROME_WIN32 = "chromedriver-win32.exe";

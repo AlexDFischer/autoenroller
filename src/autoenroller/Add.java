@@ -1,5 +1,5 @@
 package autoenroller;
-
+//TODO: What does Action Add do if Lecture is in cart but wrong Discussion?
 /**
  * To add a lecture, the lecture must be in your shopping cart.
  * When a lecture is in your shopping cart, it must have a discussion
