@@ -75,7 +75,7 @@ public class Swap extends Action {
         // Click the next button on the confirm swap into Lecture page.
         UMass.waitForElement(driver, By.cssSelector(UMass.NEXT_BUTTON_SELECTOR)).click();
         // Click the finish button on the confirm swap page.
-        UMass.waitForElement(driver, By.cssSelector(UMass.FINISH_BUTTON_SELECTOR)).click();
+        UMass.waitForElement(driver, 30, By.cssSelector(UMass.FINISH_BUTTON_SELECTOR)).click();
         // If the result icon says successful, return true.
         if(UMass.waitForElement(driver, By.cssSelector(UMass.RESULT_ICON_SELECTOR))
                 .getAttribute("innerHTML").contains(UMass.SUCCESS_ICON_HTML)) {

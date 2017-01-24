@@ -90,7 +90,7 @@ public class UMass {
 
     public static WebElement findElementTab(WebDriver driver, String tabName) {
         WebElement tabFound = null;
-        // This table has many inactive/invisible tabs, but they will not match any text.
+        // This table has many inactive/invisible rows, but they will not match any text so they can be ignored.
         for(WebElement tab : waitForElement(driver, By.cssSelector(
                 "#win0divDERIVED_SSTSNAV_SSTS_NAV_SUBTABS > div > table > tbody > tr:nth-child(2)")).findElements(By.tagName("td"))) {
             if(tab.getText().toLowerCase().equals(tabName.toLowerCase())) {
@@ -101,12 +101,31 @@ public class UMass {
         return tabFound;
     }
 
-    // This may be a good place to check if SPIRE asks to select a semester.
-    // Debatable as to whether this is too low-level and should be handled
-    // situationally rather than for every Wait instance.
-    // When they happen, semester selections come up for very many actions.
+    /**
+     * Wait for a {@link WebElement} to load.
+     * Refreshes every 200 milliseconds and times out after 10 seconds.
+     * @param driver    {@link WebDriver} running the browser.
+     * @param by        The element being checked for.
+     * @return          The {@link WebElement} once it has been found.
+     */
     public static WebElement waitForElement(WebDriver driver, By by) {
+        // This may be a good place to check if SPIRE asks to select a semester.
+        // Debatable as to whether this is too low-level and should be handled
+        // situationally rather than for every Wait instance.
+        // When they happen, semester selections come up for very many actions.
         return (new WebDriverWait(driver, 10, 200)).until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
+    /**
+     * Wait for a {@link WebElement} to load.
+     * Refreshes every 200 milliseconds and times out after a given number of seconds.
+     * @param driver            {@link WebDriver} running the browser.
+     * @param timeoutSeconds    Number of seconds to spend refreshing before timing out.
+     * @param by                The element being checked for.
+     * @return                  The {@link WebElement} once it has been found.
+     */
+    public static WebElement waitForElement(WebDriver driver, int timeoutSeconds, By by) {
+        return (new WebDriverWait(driver, timeoutSeconds, 200)).until(ExpectedConditions.presenceOfElementLocated(by));
     }
 
     public static void sleep(int millis) {

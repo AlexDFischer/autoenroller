@@ -45,7 +45,7 @@ public class Drop extends Action {
                 // Click the button to confirm drop Lecture selection.
                 driver.findElement(By.className(UMass.CONFIRM_BUTTON_CLASS)).click();
                 // Wait, then click the button to again confirm drop Lecture selection.
-                UMass.waitForElement(driver, By.cssSelector(UMass.FINISH_BUTTON_SELECTOR)).click();
+                UMass.waitForElement(driver, 30, By.cssSelector(UMass.FINISH_BUTTON_SELECTOR)).click();
                 // Wait, then if the success text is found, set to true and exit for-loop.
                 if(UMass.waitForElement(driver, By.cssSelector(UMass.RESULT_ICON_SELECTOR))
                         .getAttribute("innerHTML").contains(UMass.SUCCESS_ICON_HTML)) {

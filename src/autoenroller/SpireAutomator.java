@@ -235,5 +235,4 @@ public class SpireAutomator {
             e.printStackTrace();
         }
     }
-
 }

@@ -55,7 +55,7 @@ public class Edit extends Action {
             driver.findElement(By.cssSelector(UMass.NEXT_BUTTON_SELECTOR)).click();
             UMass.sleep(1000);
             UMass.waitForElement(driver, By.cssSelector(UMass.NEXT_BUTTON_SELECTOR)).click();
-            UMass.waitForElement(driver, By.cssSelector(UMass.FINISH_BUTTON_SELECTOR)).click();
+            UMass.waitForElement(driver, 30,  By.cssSelector(UMass.FINISH_BUTTON_SELECTOR)).click();
             // If the result icon says successful, return true.
             if(UMass.waitForElement(driver, By.cssSelector(UMass.RESULT_ICON_SELECTOR))
                     .getAttribute("innerHTML").contains(UMass.SUCCESS_ICON_HTML)) {
