@@ -11,7 +11,7 @@ To use this program, the user must manually hardcode conditions and actions,
 as well as the classes associated with them, and then build and run the program.
 Actions and conditions should be carefully considered to work under any situation.
 The user should consider potential class conflicts and outstanding prerequisites.
-Examples are provided in the main class, `autoenroller.SpireAutomator`.
+Examples are provided in the class `autoenroller.SpireAutomatorExample`.
 Actions may be created during runtime but will not have any conditions,
 and will attempt to perform on every refresh cycle until successful.
 
