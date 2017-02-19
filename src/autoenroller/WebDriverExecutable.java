@@ -11,6 +11,9 @@ package autoenroller;
  * Selenium functionality tested on:
  * Chrome on Windows
  * Chrome on Linux
+ *
+ * Known Selenium functionality problems on:
+ * Firefox on Linux
  */
 public class WebDriverExecutable {
     public static final String CHROME_WIN32 = "chromedriver-win32.exe";

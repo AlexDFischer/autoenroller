@@ -98,7 +98,7 @@ public class Lecture extends Class {
         }
     }
 
-    public Lecture addEnrolledDiscussion(Discussion enrolledDiscussion) {
+    public Lecture setEnrolledDiscussion(Discussion enrolledDiscussion) {
         this.enrolledDiscussion = enrolledDiscussion.getClassId();
         discussions.put(this.enrolledDiscussion, enrolledDiscussion);
         return this;
@@ -108,7 +108,15 @@ public class Lecture extends Class {
         return discussions.get(enrolledDiscussion);
     }
 
-    public ArrayList<Discussion> getDiscussions() {
+    public Discussion getDiscussion(String key) {
+        return discussions.get(key);
+    }
+
+    public Map<String, Discussion> getDiscussions() {
+        return discussions;
+    }
+
+    public ArrayList<Discussion> getDiscussionsList() {
         return new ArrayList<>(discussions.values());
     }
 
@@ -124,6 +132,13 @@ public class Lecture extends Class {
         return this;
     }
 
+    public Lecture addDiscussions(ArrayList<Discussion> discussions) {
+        for(Discussion d : discussions) {
+            this.discussions.put(d.getClassId(), d);
+        }
+        return this;
+    }
+
     public Lecture removeDiscussion(Discussion discussion) {
         discussions.remove(discussion.getClassId());
         return this;
@@ -131,12 +146,6 @@ public class Lecture extends Class {
 
     public boolean hasDiscussions() {
         return !discussions.isEmpty();
-    }
-
-    //TODO: Implement actual SPIRE execution to check if Lecture is open.
-    @Override
-    public boolean isOpen() {
-        return false;
     }
 
     @Override
