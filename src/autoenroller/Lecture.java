@@ -112,7 +112,11 @@ public class Lecture extends Class {
         return discussions.get(key);
     }
 
-    public ArrayList<Discussion> getDiscussions() {
+    public Map<String, Discussion> getDiscussions() {
+        return discussions;
+    }
+
+    public ArrayList<Discussion> getDiscussionsList() {
         return new ArrayList<>(discussions.values());
     }
 

@@ -295,7 +295,6 @@ public class Spire {
         return cart;
     }
 
-    //TODO: Create actions.
     private ArrayList<Action> createActions() {
         ArrayList<Action> actions = new ArrayList<>();
         Scanner s = new Scanner(System.in);
@@ -306,19 +305,70 @@ public class Spire {
             System.out.println("\"add\", \"drop\", \"edit\", \"swap\", \"done\"");
             input = s.nextLine();
             switch(input) {
-                case "add":     System.out.println("Create action add.");
+                case "add":     Add add = new Add();
+                                System.out.println("Select the class to add:");
+                                add.setLectureToAdd(selectLecture(getShoppingCart()));
+                                System.out.println("Select the discussion to add:");
+                                add.setDiscussionToAdd(selectDiscussion(add.getLectureToAdd().getDiscussions()));
+                                getActions().add(add);
                                 break;
-                case "drop":    System.out.println("Create action drop.");
+                case "drop":    Drop drop = new Drop();
+                                System.out.println("Select the class to drop:");
+                                drop.setLectureToDrop(selectLecture(getCurrentSchedule()));
+                                getActions().add(drop);
                                 break;
-                case "edit":    System.out.println("Create action edit.");
+                case "edit":    Edit edit = new Edit();
+                                System.out.println("Select the class to edit:");
+                                edit.setLectureToEdit(selectLecture(getCurrentSchedule()));
+                                do {
+                                    System.out.println("Select the discussion to edit into:");
+                                    Discussion d = selectDiscussion(edit.getLectureToEdit().getDiscussions());
+                                    if(!d.equals(edit.getLectureToEdit().getEnrolledDiscussion())) {
+                                        edit.setDiscussionToAdd(d);
+                                    } else {
+                                        System.out.println("Already enrolled in this discussion.");
+                                    }
+                                } while(edit.getDiscussionToAdd() == null);
+                                getActions().add(edit);
                                 break;
-                case "swap":    System.out.println("Create action swap.");
+                case "swap":    Swap swap = new Swap();
+                                System.out.println("Select the class to drop:");
+                                swap.setLectureToDrop(selectLecture(getCurrentSchedule()));
+                                System.out.println("Select the class to add:");
+                                swap.setLectureToAdd(selectLecture(getShoppingCart()));
+                                System.out.println("Select the discussion to add:");
+                                swap.setDiscussionToAdd(selectDiscussion(swap.getLectureToAdd().getDiscussions()));
+                                getActions().add(swap);
                                 break;
                 case "done":    break;
                 default:        System.out.println("Invalid input.");
             }
         } while(!input.equals("done"));
         return actions;
+    }
+
+    public Lecture selectLecture(Map<String, Lecture> lectures) {
+        for(Lecture l : lectures.values()) {
+            System.out.println(l.getClassId()+": "+l.getNameAndDescription());
+        }
+        Lecture result;
+        do {
+            System.out.println("Enter the class ID:");
+            result = lectures.get(new Scanner(System.in).nextLine());
+        } while(result == null);
+        return result;
+    }
+
+    public Discussion selectDiscussion(Map<String, Discussion> discussions) {
+        for(Discussion d : discussions.values()) {
+            System.out.println(d.getClassId()+"+ "+d.getNameAndDescription());
+        }
+        Discussion result;
+        do {
+            System.out.println("Enter the class ID:");
+            result = discussions.get(new Scanner(System.in).nextLine());
+        } while(result == null);
+        return result;
     }
 
     public WebDriver getDriver() {
